@@ -14,8 +14,23 @@
           <%= image_tag book.user.get_profile_image, size:'50x50' %>
           <% end %>
         </td>
-        <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
+        <td><%= link_to book.title, book, class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
+        <td>
+          <% if book.favorited_by?(current_user) %>
+            <p>
+              <%= link_to book_favorites_path(book), method: :delete, style:"color:red" do %>
+                ♥<%= book.favorites.count %>
+              <% end %>
+            </p>
+          <% else %>
+            <p>
+              <%= link_to book_favorites_path(book), method: :post do %>
+                ♡<%= book.favorites.count %>
+              <% end %>
+            </p>
+          <% end%>
+        </td>
       </tr>
     <% end %>
   </tbody>
