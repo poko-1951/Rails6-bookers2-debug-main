@@ -1,0 +1,6 @@
+<h2><%= "#{@model.capitalize}s search for "%>"<%= @content%>"</h2>
+<% if @model == "user" %>
+  <%= render "users/index", users: @users %>
+<% else %>
+  <%= render "books/index", books: @books %>
+<% end %>
