@@ -9,7 +9,7 @@
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
-  		  <tr>
+  		  <tr id="book_<%= @book.id %>">
           <td>
             <%= link_to(@book.user) do %>
             <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
@@ -21,7 +21,7 @@
           <td id="favorite_btn_<%= @book.id%>">
             <%= render "favorites/favorite", book: @book %>
           </td>
-          <td>
+          <td class="comments_count">
             <%= "コメント数: #{@book.book_comments.count}"%>
           </td>
 

@@ -1,1 +1,2 @@
     $('#favorite_btn_<%= @book.id %>').html("<%= j(render 'favorites/favorite', book: @book) %>");
+    $(".book_index").html("<%= j(render 'books/index', books: @books)%>");
