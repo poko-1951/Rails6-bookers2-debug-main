@@ -12,7 +12,6 @@ class RoomsController < ApplicationController
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
-
     end
   end
   
