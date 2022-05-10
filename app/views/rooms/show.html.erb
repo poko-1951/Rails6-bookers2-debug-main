@@ -1,0 +1,18 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-danger"><%= message %></div>
+<% end %>
+<% if @messages.present? %>
+  <% @messages.each do |m| %>
+    <div>
+      <%= image_tag m.user.get_profile_image, size:"100x100"%>
+      <span class="font-weight-bold"><%= m.message %></span>
+      <%= m.user.name %>
+      <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+    </div>
+  <% end %>
+<% end %>
+<%= form_with model:@message do |f| %>
+  <%= f.text_field :message, placeholder: "新しいメッセージを作成" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "投稿" %>
+<% end %>
